@@ -268,8 +268,8 @@ export const getDataRatio = async (unitId, start, end) => {
         
         const rows = await session.request('report/get_result_rows', paramsGetResultRows)
         const rowsMap = rows.map(item => {
-            const timestamp = item.t1*1000
-            const date = (new Date(timestamp).toLocaleDateString()).split('/').reverse().join('/')
+            const date = item.t1*1000
+            // const date = (new Date(timestamp).toLocaleDateString()).split('/').reverse().join('/')
             const gph = parseFloat(item.c[2].split(' ')[0]) // galones por hora
             const gpk = parseFloat(item.c[3].split(' ')[0]) // kilometro por galon
             return {
@@ -320,7 +320,8 @@ export const getDataPerHourDay = async (unitId, start, end) => {
         
         const rows = await session.request('report/get_result_rows', paramsGetResultRows)
         const rowsMap = rows.map(item => {
-            let date = new Date(item.t1*1000).toLocaleTimeString().split(':')[0]
+            let date = new Date(item.t1*1000).getHours().toString()
+            // let date = item.t1*1000
             let gls = parseFloat(item.c[6].split(' ')[0])
             let hrs = parseFloat((item.c[5].split(':').reduce((acc, curr) => acc * 60 + +curr, 0)/3600).toFixed(2))
             let kms = parseInt(item.c[2].split(' ')[0])

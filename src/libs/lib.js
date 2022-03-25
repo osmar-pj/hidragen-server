@@ -26,3 +26,32 @@ export const createArrNulls = (hour) => {
   })
   return { dato }
 }
+
+export const createArrNullsBefore = (hour) => {
+    const arr = new Array(hour).fill(0)
+    const dato = arr.map((item, index) => {
+      return {
+        combustible: {
+            x: index.toString(),
+            y: null
+        },
+        kilometraje: {
+            x: index.toString(),
+            y: null
+        },
+        horas: {
+            x: index.toString(),
+            y: null
+        },
+        speedAv: {
+            x: index.toString(),
+            y: null
+        },
+        speedMax: {
+            x: index.toString(),
+            y: null
+        }
+      }
+    })
+    return { dato }
+  }
