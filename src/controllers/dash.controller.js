@@ -19,21 +19,21 @@ client.subscribe(process.env.TOPIC_MQTT_SENSOR, { qos: 0 })
 let sensors = []
 let datasFiltered = []
   
-client.on('message', async (topic, message) => {
-    const data = JSON.parse(message.toString())
-    data.createdAt = new Date()
-    sensors.push(data)
-    if (sensors.length > 10) {
-        // reverse sensors
-        // borrar ultimo dato
-        sensors.shift()
-    }
-    if (sensors) {
-        datasFiltered = sensors.reverse().filter((elem, index, self) => {
-            return self.map(item => item.nm.toString()).indexOf(elem.nm.toString()) === index
-        })
-    }
-})
+// client.on('message', async (topic, message) => {
+//     const data = JSON.parse(message.toString())
+//     data.createdAt = new Date()
+//     sensors.push(data)
+//     if (sensors.length > 10) {
+//         // reverse sensors
+//         // borrar ultimo dato
+//         sensors.shift()
+//     }
+//     if (sensors) {
+//         datasFiltered = sensors.reverse().filter((elem, index, self) => {
+//             return self.map(item => item.nm.toString()).indexOf(elem.nm.toString()) === index
+//         })
+//     }
+// })
 
 export const getDataDashboard = async (req, res) => {
     try {

@@ -203,6 +203,7 @@ export const getDataByTurn = async (unitId, start, end) => {
             const week = ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa']
             const day = new Date(item.t1*1000).getDay()
             const date = `${week[day]} ${new Date(item.t1*1000).getDate()}`
+            // const date = item.t1*1000
             let gls = parseFloat(item.c[2].split(' ')[0])
             let hrs = parseFloat((item.c[3].split(':').reduce((acc, curr) => acc * 60 + +curr, 0)/3600).toFixed(2))
             let kms = parseInt(item.c[4].split(' ')[0])

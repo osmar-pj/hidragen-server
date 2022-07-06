@@ -25,7 +25,7 @@ export const getDataWeek = async (req, res) => {
                   radio: { id: 1, nm: 'combustible', description: 'Galones (gal)' },
               })
             }
-            // console.log(totalData)
+            console.log(totalData[0].teamDay)
         }
       }
       res.status(200).json({
